@@ -247,6 +247,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "<footer>"
               "<h6>Powered by www.letscontrolit.com</h6>"
               "</footer>"
+              "{{espjs}}"
               "</body>"            );
   }
   else if (tmplName == F("TmplMsg"))
@@ -270,6 +271,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "<footer>"
               "<h6>Powered by www.letscontrolit.com</h6>"
               "</footer>"
+              "{{espjs}}"
               "</body>"
             );
   }
@@ -299,6 +301,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
         "<footer>"
           "<h6>Powered by www.letscontrolit.com</h6>"
         "</footer>"
+        "{{espjs}}"
       "</body></html>"
             );
   }
@@ -532,7 +535,13 @@ void getWebPageTemplateVar(const String& varName, String& varValue)
       varValue = F("<img src=\"esp.png\" width=48 height=48 align=right>");
     }
   }
-
+  else if (varName == F("espjs"))
+  {
+    if (SPIFFS.exists("espjs.js"))
+    {
+      varValue = F(" <script src=\"espjs.js\"></script> ");
+    }
+  }
   else if (varName == F("css"))
   {
     if (SPIFFS.exists("esp.css"))   //now css is written in writeDefaultCSS() to SPIFFS and always present
