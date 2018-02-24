@@ -3,7 +3,6 @@
 .gcc-flags.json
 .piolibdeps
 .DS_Store
-
 lib/readme.txt
 src/Custom.h
 .vscode/
