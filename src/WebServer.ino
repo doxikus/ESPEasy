@@ -276,19 +276,19 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
   else   //all other template names e.g. TmplStd
   {
     tmpl += F(
-        "<!DOCTYPE html><html lang='en'>"
-        "<head>"
+      "<!DOCTYPE html><html lang='en'>"
+      "<head>"
         "<meta charset='utf-8'/>"
         "<title>{{name}}</title>"
         "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
         "{{js}}"
         "{{css}}"
-        "</head>"
-        "<body class='bodymenu'>"
+      "</head>"
+      "<body class='bodymenu'>"
         "<span class='message' id='rbtmsg'></span>"
         "<header class='headermenu'>"
-        "<h1>ESP Easy Mega: {{name}} {{logo}}</h1>"
-        "{{menu}}"
+          "<h1>ESP Easy Mega: {{name}} {{logo}}</h1>"
+          "{{menu}}"
         "</header>"
         "<section>"
         "<span class='message error'>"
@@ -297,20 +297,10 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
         "{{content}}"
         "</section>"
         "<footer>"
-        "<h6>Powered by www.letscontrolit.com</h6>"
+          "<h6>Powered by www.letscontrolit.com</h6>"
         "</footer>"
-        "<script>function Topnav() {
-          var x = document.getElementById('myNav');
-          if (x.className == = 'menubar')
-          {
-            x.className += ' responsive';
-          }
-          else
-          {
-            x.className = 'menubar';
-          }
-        }</ script>"
-        "</body></html>");
+      "</body></html>"
+            );
   }
 }
 
