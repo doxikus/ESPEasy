@@ -235,6 +235,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
               "<title>{{name}}</title>"
               "{{css}}"
+              "{{espjs}}"
               "</head>"
               "<body>"
               "<header class='headermenu'>"
@@ -247,7 +248,6 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "<footer>"
               "<h6>Powered by www.letscontrolit.com</h6>"
               "</footer>"
-              "{{espjs}}"
               "</body>"            );
   }
   else if (tmplName == F("TmplMsg"))
@@ -259,6 +259,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
               "<title>{{name}}</title>"
               "{{css}}"
+              "{{espjs}}"
               "</head>"
               "<body>"
               "<header class='headermenu'>"
@@ -271,7 +272,6 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "<footer>"
               "<h6>Powered by www.letscontrolit.com</h6>"
               "</footer>"
-              "{{espjs}}"
               "</body>"
             );
   }
@@ -285,6 +285,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
         "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
         "{{js}}"
         "{{css}}"
+        "{{espjs}}"
       "</head>"
       "<body class='bodymenu'>"
         "<span class='message' id='rbtmsg'></span>"
@@ -301,7 +302,6 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
         "<footer>"
           "<h6>Powered by www.letscontrolit.com</h6>"
         "</footer>"
-        "{{espjs}}"
       "</body></html>"
             );
   }
@@ -323,7 +323,6 @@ void sendWebPageChunkedBegin(String& log)
 void sendWebPageChunkedData(String& log, String& data)
 {
   checkRAM(F("sendWebPageChunkedData"));
-   
   if (data.length() > 0)
   {
     statusLED(true);
@@ -509,7 +508,7 @@ void getWebPageTemplateVar(const String& varName, String& varValue)
       F("Tools"), F("tools"),                 //7
     };
 
-    varValue += F("<div class='menubar'>");
+    varValue += F("<div class='menubar' id='myNav'>");
 
     for (byte i = 0; i < 8; i++)
     {
@@ -525,7 +524,7 @@ void getWebPageTemplateVar(const String& varName, String& varValue)
       varValue += gpMenu[i][0];
       varValue += F("</a>");
     }
-
+    varValue += F("<a href='javascript:void(0);' class='icon' onclick='Topnav()'>&#9776;</a>");
     varValue += F("</div>");
   }
 
@@ -4523,7 +4522,6 @@ void handle_sysinfo() {
   reply += F("<TR><TD>Allowed IP Range<TD>");
   reply += describeAllowedIPrange();
 
-#if defined(ESP8266)
   reply += F("<TR><TD>Serial Port available:<TD>");
   reply += String(SerialAvailableForWrite());
   reply += F(" (");
@@ -4531,7 +4529,6 @@ void handle_sysinfo() {
   reply += F(" , ");
   reply += Serial.available();
   reply += F(")");
-#endif
 
   reply += F("<TR><TD>STA MAC:<TD>");
   uint8_t mac[] = {0, 0, 0, 0, 0, 0};
@@ -4587,9 +4584,6 @@ void handle_sysinfo() {
   reply += String(CRCValues.compileDate);
   reply += " ";
   reply += String(CRCValues.compileTime);
-
-  reply += F("<TR><TD>Binary filename<TD>");
-  reply += String(CRCValues.binaryFilename);
 
   reply += F("<TR><TD colspan=2><H3>ESP board</H3></TD></TR>");
 
