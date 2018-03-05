@@ -239,7 +239,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "</head>"
               "<body class='bodymenu' id='shrink'>"
               "<header class='headermenu'>"
-              "<div class'logo>"
+              "<div class='logo'>"
               "{{logo}}"
               "</div>"
               "<h1>Welcome to ESP Easy Mega AP</h1>"
@@ -266,7 +266,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "</head>"
               "<body class='bodymenu' id='shrink'>"
               "<header class='headermenu'>"
-              "<div class'logo>"
+              "<div class='logo'>"
               "{{logo}}"
               "</div>"
               "<h1>ESP Easy Mega: {{name}}</h1>"
@@ -296,7 +296,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
       "<body class='bodymenu' id='shrink'>"
         "<span class='message' id='rbtmsg'></span>"
         "<header class='headermenu'>"
-        "<div class'logo>"
+        "<div class='logo'>"
         "{{logo}}"
         "</div>"
           "<h1>ESP Easy Mega: {{name}}</h1>"
@@ -541,7 +541,7 @@ void getWebPageTemplateVar(const String& varName, String& varValue)
   {
     if (SPIFFS.exists("esp.png"))
     {
-      varValue = F("<img src=\"esp.png\" width=48 height=48 align=right>");
+      varValue = F("<img src=\"esp.png\" alt=\"ESPeasy\">");
     }
   }
   else if (varName == F("espjs"))
