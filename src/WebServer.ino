@@ -502,7 +502,7 @@ void getWebPageTemplateDefault(const String& tmplName, String& tmpl)
               "{{css}}"
               "{{espjs}}"
               "</head>"
-              "<body>"
+              "<body class='bodymenu' id='shrink'>"
               "<header class='apheader'>"
               "<h1>Welcome to ESP Easy Mega AP</h1>"
               "</header>"
@@ -858,7 +858,7 @@ void handle_root() {
 
     TXBuffer += printWebString;
     TXBuffer += F("<form>");
-    TXBuffer += F("<table><TR><TH>System Info<TH>Value<TH><TH>System Info<TH>Value<TH>");
+    TXBuffer += F("<table class="home-tbl"><TR><TH>System Info<TH>Value<TH><TH>System Info<TH>Value<TH>");
 
     TXBuffer += F("<TR><TD>Unit:<TD>");
     TXBuffer += String(Settings.Unit);
